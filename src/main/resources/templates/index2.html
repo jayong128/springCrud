@@ -9,7 +9,10 @@
             <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
             <div th:if="${username}">Logged in as : <span id="users" th:text="${username}">username</span>
                 <a href="/logout" class="btn btn-info active" role="button">Logout</a></div>
-            <div th:unless="${username}"><a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a></div>
+            <div th:unless="${username}">
+                <a href="/oauth2/authorization/naver" class="btn btn-success active" role="button">Naver Login</a>
+                <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+            </div>
         </div>
     </div>
     <table class="table table-horizontal table-bordered">

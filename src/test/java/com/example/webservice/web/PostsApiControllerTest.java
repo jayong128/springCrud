@@ -15,6 +15,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
 
@@ -37,6 +39,7 @@ class PostsApiControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "USER")
     public void post_create() {
         //given
         String title = "title";
@@ -57,6 +60,7 @@ class PostsApiControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "USER")
     public void post_update() {
         //given
         Posts save = postsRepository.save(Posts.builder().title("title")
@@ -87,7 +91,7 @@ class PostsApiControllerTest {
         String body = this.restTemplate.getForObject("/", String.class);
 
         //when
-        Assertions.assertThat(body).contains("스프링 부트로 시작하는 웹 서비스");
+        Assertions.assertThat(body).contains("스프링 부트");
         //then
     }
 }
